@@ -1,0 +1,627 @@
+/* ================== RESET CSS ==================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family: "Helvetica Neue", Helvetica, Arial, Utkal, sans-serif;
+}    /*^^ setting the fallback fonts taken right from the CNN website (inspected elements)*/
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*MAIN CONTAINER + GENERAL STYLES*/
+.wrapper {
+	width: 1100px;
+	margin: 0 auto;
+	height: 100%;
+}
+label:hover { /*display hand pointer when you hover over any label (aka the ckeckbox action items in our headers!)*/
+	cursor: pointer;
+}
+a {
+	text-decoration: none;
+}
+
+/* ================== HEADER ==================*/
+.page-header {
+	height: 50px;
+	width: 100%;
+	background: #0c0c0c;
+	color: rgb(191, 191, 191);
+	position: fixed; /*I ADDED THIS*/
+	z-index: 100000; /*I ADDED THIS*/
+}
+.page-header a {
+	color: inherit; /*inherit grey color from the parent (.page-header)*/
+}
+.header-left {
+	float: left;
+	display: flex;
+	height: 100%;
+}
+.header-right {
+	float: right;
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
+.page-nav ul {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+.page-logo img {
+	position: absolute; /*(hides element from others)*/
+	width: 100%; /*(width is 100% of parent element, .page-logo width is 60px)*/
+	z-index: 100000;
+}
+.page-logo {
+	position: relative;
+	width: 60px;
+	left: -10px; /*i added this line*/
+}
+.page-nav ul li {
+	margin: 0 0 0 5px; /*gives space between header items left side*/
+	text-transform: capitalize;
+	font-size: 15px;
+	font-weight: 300;
+}
+.page-nav ul li::after {
+	content:"|";
+	margin-left: 5px; /*gives divider some space on both sides*/
+}
+.page-nav ul li:last-child::after {
+	content: "";    /*hides the last "|" thing in header menu*/
+}
+.page-nav a:hover {
+	color: #fff;
+}
+.page-search {
+	position: relative;
+}
+.search-switcher-label {
+	margin: 0 15px;
+}
+.page-search-field { /*building out the search bar*/
+	width: 980px;
+	position: absolute;
+	right: 40px;
+	top: -8px;
+	font-size: 16px;
+	padding: 5px;
+	font-weight: 300; 
+	display: none; /*(hides block by default. Pair with "hidden attribute in html")*/
+}
+#search-switcher:checked~.page-search-field { /*tilde selects neighboring element on same level*/
+	display: block;
+}
+.psfl { /*aka page search field label*/
+	position: absolute;
+	right: 40px;
+	top: -6px;
+	height: 30px;
+	background: transparent;
+	width: 100px;
+	line-height: 30px;
+	color: #000;
+	display: none; /*like the whole search field div, this search button is hidden til search logo is pressed*/
+}
+#search-switcher:checked~.psfl { /*tilde selects neighboring element on same level*/
+	display: block; /*displays search label we created above*/
+}
+.international-block {
+	background: rgba(0,0,0,0.9);
+	position: absolute;
+	top: 50px;
+	padding: 12px 15px 15px;
+	width: 250px;
+	left: -70px;
+	z-index: 500; /*i added this*/
+	box-sizing: border-box;
+	font-weight: 300px;
+	display: none; /*(hides block by default. Pair with "hidden attribute in html")*/
+}
+#international-switcher:checked~.international-block{ /*tilde selects neighboring element on same level*/
+	display: block;
+}
+.international-edition {
+	position: relative;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+.international-edition label {
+	font-size: 15px;
+}
+.international-block ul {
+	text-align: right;
+}
+.international-block ul li {
+	margin-bottom: 20px;
+	padding: 0 15px;  /*sets padding for top half of international list items (languages)*/
+}
+.international-block hr {
+	background: transparent;
+	border: 0; /*removes pre-existing borders of the hr (header) tag*/
+	border-top: 1px solid #bfbfbf;
+	margin-bottom: 20px;
+}
+.international-block p {
+	text-align: right;
+	margin-right: 15px; /*YAY!!! I DID THIS LINE OF CODE! (Aligning the "Set edition preference:" p tag with label elements*/
+}
+.flex-block {
+	display: flex;
+}
+.row-block.flex-block {
+	justify-content: space-between;
+	/*margin-top: 20px;
+	margin-bottom: 15px;*/
+	margin: 20px 15px 10px; /*waaayy too proud of this*/
+}
+
+.row-block.flex-block p {
+	margin: 15px 0;
+}
+.row-block.flex-block label:nth-of-type(1) {
+	margin-right: auto;
+}
+.international-edition label:nth-child(2):hover {
+	color: #fff; /*me creating white when hovering over int.ed. button*/
+}
+.row-block.flex-block label:nth-of-type(1) {
+	color: #bfbfbf;
+}
+/*because I placed this CSS set seen above ^^^^^ RIGHT UNDER/AFETR: 
+.international-edition label:nth-child(2):hover {
+	color: #fff;
+} , this prevents the US from turning white when hovered over!
+	The lower thing takes priority :)
+*/
+.row-block.flex-block input {
+	margin-right: 5px; /*space between radio button and U.S. (etc)*/
+}
+.row-block.flex-block:nth-of-type(2) { /*(selecting 2nd flexblock of group)*/
+	justify-content: flex-end; /*moving the confirm button to right side of flexbox*/
+}
+.confirm {
+	background-color: transparent;
+	border: 1px solid #bfbfbf;
+	padding: 0 15px;
+	height: 30px;
+	line-height: 30px;
+	width: 85px;
+	color: #bfbfbf;
+	font-size: 15px;
+}
+.confirm:hover { /*I ADDED ALL THIS CODE IN*/
+	color: #fff;
+	cursor: pointer;
+	border: 1px solid #fff;
+}
+.international-block ul li:hover { /*I ADDED ALL THIS CODE IN*/
+	color: #fff;
+	cursor: pointer;
+}
+.header-expanded-menu-block {
+	width: 100vw; /*width set to be 100% of view window*/
+	background: rgba(0,0,0,0.9);
+	position: absolute;
+	top: 50px;
+	right: 0px;
+	display: none; /*(hides header block by default)*/
+}
+#expanded-switcher:checked~.header-expanded-menu-block {
+	display: block;
+}
+.expanded-top-block {
+	margin-top: 15px;
+}
+.expanded-top-block h3{
+	font-size: 22px;
+	font-weight: 300; 
+	color: #fff;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	height: 22px; /*I ADDED THIS LINE TO MAKE ALL H3 HEIGHTS UNIFORM (basically restricting img height!)*/
+}
+.expanded-top-block a {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.5; /*this line stopped working here so I added new code that works for li below*/
+}
+.expanded-top-block li {
+	line-height: 1.5; /*and this applies to the footer items as well*/
+}
+.expanded-top-block .col-2 { /*for columns inside top block class*/
+	padding-left: 0;
+	padding-right: 0;
+}
+.expanded-bottom-block .international-block {
+	display: flex;
+	position: static;
+	align-items: center;
+	width: 80%;
+	background: transparent;
+	padding-left: 0px;
+}
+.expanded-bottom-block .international-block ul {
+	display: flex;
+	align-items: center;
+}
+.expanded-bottom-block .international-block ul li {
+	margin-bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;	
+}
+.expanded-col ul li a:hover {
+	color: #fff;	/*i added this*/
+}
+.expanded-bottom-block .international-block ul li:first-child {
+	padding: 0px;
+}
+.expanded-bottom-block .international-block img {
+	height: 30px;
+	margin-right: 5px;
+}
+.expanded-bottom-block .international-block p {
+	font-size: 13px;
+	margin: 0 2px 0 15px;
+	text-align: left;
+}
+.expanded-bottom-block .international-block label {
+	font-size: 13px;
+	margin-right: 15px;
+}
+.expanded-bottom-block .international-block input {
+	font-size: 10px;
+}
+.expanded-bottom-block .international-block .flex-block {
+	align-items: center;
+}
+.expanded-bottom-block .row-block.flex-block label:nth-of-type(1) {
+	margin-right: 15px;
+}
+
+/* ================== MAIN ==================*/
+article img {
+	width: 100%;
+}
+main {
+	padding-top: 65px; /*from 15 to 65 (had to add the 50px fixed cnn header*/
+}
+.bold {
+	font-weight: bold;
+}
+h1 {
+	color: #262626;
+	font-size: 55.44px;
+	font-weight: 500;
+	line-height: 1.11;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.image-label {
+	background: rgb(204, 0, 0);
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 12px;
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+	width: auto;
+	padding: 0 10px;
+	position: absolute;
+	bottom: 100%;
+	left: 0px;
+	white-space: nowrap; /*prevents text in labels from wrapping/going into 2 lines*/
+}
+.label-block{
+	position: absolute;
+	bottom: 2.5px;
+	left: 0;
+}
+.image-block {
+	position: relative;
+}
+article h3 {
+	color: rgb(38, 38, 38);
+	font-size: 16px;
+	line-height: 20px;
+	margin: 7px 0;
+}
+article h3:hover { /*i added this woo*/
+	color: #c00;
+	cursor: pointer;
+}
+h1:hover { /*i added this woo*/
+	color: #c00;
+	cursor: pointer;
+}
+.main a:hover { /*i added this woo*/
+	color: #c00;
+	cursor: pointer;
+}
+.last-news a:hover { /*i added this woo*/
+	color: #c00;
+	cursor: pointer;
+}
+article {
+	margin-bottom: 30px;
+}
+.last-news a {
+	font-size: 15px;
+	font-weight: 300px;
+	color: rgb(38, 38, 38);
+	line-height: 1.33; /*i added this woo*/
+}
+.last-news li {
+	padding: 8px 0;
+	border-top: 1px solid #d9d9d9;
+}
+.play::after {
+	content: "\f144";
+	font-family: "Font Awesome 5 Free";
+	color: #a6a6a6;
+	margin-left: 6px;
+}
+.semi-grey {
+	font-size: 21px;
+	font-weight: 300;
+	text-align: center;
+	line-height: 1.2;
+	background-color: #e6e6e6;
+	padding: 10px 10px 15px;
+	margin: -23px 30px 0; /*margin overlaps image a bit and is set relative to img width*/
+	position: relative;
+	z-index: 100;
+}
+.category {
+	color: #404040;
+	font-weight: bold;
+	padding: 7px;
+	background: #f2f2f2;
+}
+/* ================== MAIN, SECOND ROW ==================*/
+
+.middle-size {
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 1.2;
+}
+.full-width-heading{
+	font-size: 30px;
+	font-weight: 300;
+	color: rgb(38,38,38);
+	line-height: 1.13;
+	background: rgba(250, 250, 250, 0.85);
+	width: 100%;
+	padding: 7px 10px;
+}
+.no-margin {
+	margin: 0;
+}
+.top-border {
+	border-top: 1px solid #d9d9d9;
+}
+.with-opacity {
+	background-color: rgba(250, 250, 250, 0.85);
+}
+.no-margin {
+	margin: 0;
+}
+
+.col-7 {
+	padding-left: 0px;
+}
+.small-size {
+	font-size: 15px;
+	font-weight: 300;
+	line-height: 1.2;
+}
+.farm {  /*i added all this!*/
+	height: 75px;
+	width: 75px;
+	background-size: cover;
+	background-image: url(http://i2.cdn.turner.com/cnnnext/dam/assets/170606100031-fadi-boukaram-lebanon-gun-club-super-169.jpg);
+	background-repeat: no-repeat;
+	background-color: #eee;
+	margin: 0 auto;
+	clear: none;
+
+}
+.sharapova { /*i added all this!*/
+	width: 75px;
+	height: 75px;
+	margin-bottom: 2px;
+}
+.section-heading {
+	color: #262626;
+	font-size: 24px;
+	font-weight: 300px;
+	display: flex;
+	align-items: center;
+	white-space: nowrap;
+	margin-bottom: 16px;
+}
+.section-heading:after {
+	content: '.';
+	width: 100%; /*if u dont set any width, the div wont show up!*/
+	font-size: 0px;
+	height: 1px;
+	border-top: 4px solid #d9d9d9;
+	border-bottom: 4px solid #d9d9d9;
+	margin-left: 6px;
+	margin-top: 6px;
+}
+.dark-section {
+	background: #1a1a1a;
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+.dark-section .section-heading:after {
+	border-color: #c00;
+}
+.dark-section .image-label {
+	background: #fff;
+	color: #c00;
+}
+.dark-section .with-opacity {
+	background: rgba(38, 38, 38, 0.85);
+	box-sizing: content-box;
+}
+.dark-section h3 {
+	color: #fff;
+	white-space: nowrap;
+}
+/* ================== FOOTER ==================*/
+.page-footer {
+	background-color: #0c0c0c;
+	color: #fff;
+	padding-top: 30px;
+	padding-bottom: 60px;
+}
+.page-footer a {
+	color: #bfbfbf;
+}
+.page-footer li a {
+	line-height: 1.5;
+}
+.footer-top-block{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 35px;
+}
+.footer-weather {
+	display: flex;
+	align-items: center;
+}
+.footer-weather img {
+	margin: 0 10px;
+}
+.footer-top-block .search {
+	background: #262626;
+	color: #bfbfbf;
+	border: 0; /*REMOVES ANY DEFAULT BORDER SETTING ON A DIV OR SEARCH FIELD*/
+	width: 320px;
+	height: 35px;
+	outline: none;
+	font-size: 16px;
+	font-weight: 400; /*(aka the default)*/
+	padding: 5px 45px 5px 12px;
+}
+.footer-top-block .search-block label {
+	margin-left: -35px;
+	font-size: 20px; /*(defining height of search icon here)*/
+	color: #bfbfbf;
+}
+.footer-top-block .search-block {
+	display: flex;
+	align-items: center;
+}
+.copy {
+	width: 100%;
+	text-align: right;
+	color: #595959;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.6;
+	background-color: transparent;
+}
+.outer-container {
+	width: 100%;
+	height: 50px;
+	padding: 80px 0 10px 0;
+}
+.copy a {
+	color: #fff;
+	font-size: 20px;
+	border: 1px solid #fff;
+	padding: 5px;
+}
+
+.copy a:hover {
+	color: #c00;
+	cursor: pointer;
+	border: 1px solid #c00;
+}
+
+.middle-size2 {
+	font-size: 22.5px;
+	font-weight: 300;
+	line-height: 1.2;
+}
+
+
+/* 21 THINGS I ADDED TO ENHANCE PROJECT
+1. hover white color text (menu items and confirm button etc)
+2. readjusting font sizes
+3. making search logo icon thinner using font weight (footer only)
+4. making international edition label white when hovered over (and avoiding this accidentally happening to the US label within the div!
+5. re-centering the "set edition preference" menu to be aligned properly (added more padding-right)
+6. adding in the images in as h3 for STYLE money and tech headers!
+7. setting uniform h3 height to be 22px so that images dont create extra space below before the first list item
+8. EXTRA CREDIT! I correctly added and represented the copywright paragraphs using class copy
+9. Correctly re-adjusted the line height for hamburger/footer menus to be 1.6. In the videos, it is set to 1.6 but then something disables that later on!
+10. adjusted nav ul items in header to be 15px not 16px (same with international edition menu!)
+11. Upgrading the chevron blocks using unicode in html rather than >> these >> things
+12. text ransform for red uk button (all button labels) UPPERCASE letters
+13. adding lebanon image as background image!!! (background-size: cover;)
+14. resizing sharapova and farm images to both be 75x75px!
+15. fixed bottom padding on dark section
+16. Created my own heading class (middle 2) b/c I noticed the heading, h3 font was slightly larger in this section (22.5px instead of 20px!)
+	.middle-size2 {
+		font-size: 22.5px;
+		font-weight: 300;
+		line-height: 1.2;
+	}
+17. moving red line down (margin top:  6px; for dark section section heading after)
+18. I FIXED THE CNN PAGE HEADER AND GAVE IT BIG Z INDEX
+19. THEN ADJUSTED PADDING TOP FOR MAIN BY ADDING 50 PX TO IT! padding-top: 65px;
+20. Addded a REALLY cool back to top button at the very end 11:41pm 9/2/21! 
+21. lowered position of black line and red lines for section header after (see line 492)
+22. I added all the correct images and subheadlines
+23.
+24.
+
+Its not a responsive website but thats ok I DID IT!!!!
+*/
